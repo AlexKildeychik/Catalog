@@ -34,7 +34,15 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    &nbsp;
+                    &nbsp;<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Categories<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            @foreach(App\Category::all() as $category)
+                                <li><a href="/catalog/{{$category->slug}}">{{$category->name}}</a></li>
+                                @endforeach
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -84,7 +92,7 @@
                                 <a href="{{$catalog->path()}}">{{$catalog->title}}</a>
                             </p>
                             <p class="product-desc">{{$catalog->description}}.</p>
-                            <p class="product-price">{{$catalog->price}} gold</p>
+                            <p class="product-price">{{$catalog->price}} chaos</p>
                     </div>
             </div>
                 @endforeach

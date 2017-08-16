@@ -14,6 +14,8 @@ class CommentsController extends Controller
 
     public function store($categoryId, Catalog $catalog)
     {
+        $this->validate(request(), ['body' => 'required']);
+
         $catalog->addComments([
             'body' => request('body'),
             'user_id' => auth()->id()

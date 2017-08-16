@@ -15,11 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/catalog', 'CatalogsController@index');
 Route::get('/catalog/create', 'CatalogsController@create');
 Route::get('/catalog/{category}/{catalog}', 'CatalogsController@show');
-Route::post('/catalog/{category}/{catalog}/comments', 'CommentsController@store');
-Route::post('/catalog', 'CatalogsController@store');
+Route::post('catalog', 'CatalogsController@store');
+Route::get('catalog/{category}', 'CatalogsController@index');
+Route::post('catalog/{category}/{catalog}/comments', 'CommentsController@store');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+

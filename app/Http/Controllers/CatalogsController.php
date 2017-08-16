@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Category;
 use App\Catalog;
 use Illuminate\Http\Request;
 
@@ -17,9 +17,13 @@ class CatalogsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category)
     {
-        $catalogs = Catalog::latest()->get();
+        if ($category->exists) {
+            $catalogs = $category->catalogs()->latest()->get();
+        } else {
+            $catalogs = Catalog::latest()->get();
+        }
         return view('catalogs.index', compact('catalogs'));
     }
 
@@ -42,6 +46,14 @@ class CatalogsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'category_id' => 'required|exists:categories,id'
+        ]);
+
+
         $catalog = Catalog::create([
             'user_id' => auth()->id(),
             'category_id' => request('category_id'),
