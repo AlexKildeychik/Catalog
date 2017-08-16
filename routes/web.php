@@ -17,8 +17,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/catalog', 'CatalogsController@index');
 Route::get('/catalog/create', 'CatalogsController@create');
-Route::get('/catalog/{catalog}', 'CatalogsController@show');
-Route::post('/catalog/{catalog}/comments', 'CommentsController@store');
+Route::get('/catalog/{category}/{catalog}', 'CatalogsController@show');
+Route::post('/catalog/{category}/{catalog}/comments', 'CommentsController@store');
 Route::post('/catalog', 'CatalogsController@store');
 
 

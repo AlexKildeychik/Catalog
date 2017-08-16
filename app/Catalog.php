@@ -10,12 +10,17 @@ class Catalog extends Model
 
     public function path()
     {
-        return '/catalog/' . $this->id;
+        return "/catalog/{$this->category->slug}/{$this->id}";
     }
 
     public function comments()
     {
         return $this->hasMany(Comments::class);
+    }
+
+    public function category()
+    {
+         return $this->belongsTo(Category::class);
     }
 
     public function addComments($comments)

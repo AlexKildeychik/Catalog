@@ -12,7 +12,7 @@ class CommentsController extends Controller
     }
 
 
-    public function store(Catalog $catalog)
+    public function store($categoryId, Catalog $catalog)
     {
         $catalog->addComments([
             'body' => request('body'),

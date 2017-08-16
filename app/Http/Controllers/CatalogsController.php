@@ -44,6 +44,7 @@ class CatalogsController extends Controller
     {
         $catalog = Catalog::create([
             'user_id' => auth()->id(),
+            'category_id' => request('category_id'),
             'title' => request('title'),
             'description' => request('description'),
             'price' => request('price')
@@ -58,7 +59,7 @@ class CatalogsController extends Controller
      * @param  \App\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function show(Catalog $catalog)
+    public function show($categoryId, Catalog $catalog)
     {
             return view('catalogs.show', compact('catalog'));
     }
