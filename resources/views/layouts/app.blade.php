@@ -12,8 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/catalog.css') }}" rel="stylesheet">
 </head>
-<body style="padding-bottom: 100px;">
+<body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -37,6 +38,17 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;<li><a href="/catalog">All catalogs</a> </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        &nbsp;<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">Categories<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @foreach(App\Category::all() as $category)
+                                    <li><a href="/catalog/{{$category->slug}}">{{$category->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
