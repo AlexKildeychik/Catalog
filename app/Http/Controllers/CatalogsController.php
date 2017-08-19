@@ -22,7 +22,7 @@ class CatalogsController extends Controller
         if ($category->exists) {
             $catalogs = $category->catalogs()->latest()->get();
         } else {
-            $catalogs = Catalog::latest()->get();
+            $catalogs = Catalog::with('category')->latest()->get();
         }
         return view('catalogs.index', compact('catalogs'));
     }

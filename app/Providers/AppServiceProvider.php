@@ -14,7 +14,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \View::composer('*', function ($view) {
-            $view->with('categories', Category::all());
+            $categories = \Cache::rememberForever('categories', function (){
+                return Category::all();
+            });
+
+            $view->with('categories', $categories);
         });
     }
 
@@ -25,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->isLocal()) {
+            $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+        }
     }
 }
