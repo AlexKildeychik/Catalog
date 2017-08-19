@@ -6,8 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/catalog.css') }}" rel="stylesheet">
+
 </head>
 <body style="padding-bottom: 100px;">
 
@@ -15,9 +14,11 @@
 <!-- Scripts -->
 <div class="container content">
 <div class="col-md-12 products">
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="product">
+
     <div class="product-img">
         <a href="#"></a>
     </div>
@@ -27,11 +28,21 @@
     <p class="product-desc">{{$catalog->description}}.</p>
     <p class="product-price">{{$catalog->price}} gold</p>
     </div>
-    </div>
+
     </div>
     </div>
 
+    </div>
+
 </div>
+        <div class="text-center">
+    <form action="{{$catalog->path()}}" method="post">
+        {{csrf_field()}}
+        {{method_field('DELETE')}}
+        <button type="submit" class="btn btn-click">Delete catalog</button>
+    </form>
+        </div>
+
 <div class="container content">
     <div class="col-md-8-offset-2">
         @foreach($catalog->comments as $comment)

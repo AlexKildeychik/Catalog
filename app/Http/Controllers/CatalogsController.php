@@ -71,9 +71,17 @@ class CatalogsController extends Controller
      * @param  \App\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function show($categoryId, Catalog $catalog)
+    public function show($category, Catalog $catalog)
     {
             return view('catalogs.show', compact('catalog'));
+    }
+
+
+    public function destroy($category, Catalog $catalog)
+    {
+        $catalog->comments()->delete();
+        $catalog->delete();
+        return redirect('/catalog');
     }
 
     /**
@@ -105,8 +113,5 @@ class CatalogsController extends Controller
      * @param  \App\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Catalog $catalog)
-    {
-        //
-    }
+
 }
