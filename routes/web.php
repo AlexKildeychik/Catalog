@@ -22,7 +22,7 @@ Route::get('/catalog/{category}/{catalog}', 'CatalogsController@show');
 Route::post('catalog', 'CatalogsController@store');
 Route::get('catalog/{category}', 'CatalogsController@index');
 Route::post('catalog/{category}/{catalog}/comments', 'CommentsController@store');
-
+Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 
 
 

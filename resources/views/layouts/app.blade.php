@@ -37,14 +37,18 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;<li><a href="/catalog">All catalogs</a> </li>
-                    </ul>
-                    <ul class="nav navbar-nav">
+                        &nbsp;<li>
+                            <a href="/catalog">All catalogs</a> </li>
+                        <li>
+                            <a href="/catalog/create">New catalog</a>
+                        </li>
+
+
                         &nbsp;<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false">Categories<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                @foreach(App\Category::all() as $category)
+                                @foreach($categories as $category)
                                     <li><a href="/catalog/{{$category->slug}}">{{$category->name}}</a></li>
                                 @endforeach
                             </ul>

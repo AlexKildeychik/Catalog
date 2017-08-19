@@ -13,6 +13,11 @@ class Catalog extends Model
         return "/catalog/{$this->category->slug}/{$this->id}";
     }
 
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function comments()
     {
         return $this->hasMany(Comments::class);
