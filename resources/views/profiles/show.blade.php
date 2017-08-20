@@ -14,8 +14,9 @@
                 <div class="panel-heading">
                     <div class="level">
                        <span class="flex">
-                            <a href="#">{{ $catalog->creator->name }}</a> posted:
-                           {{ $catalog->title }}
+                            <a href="{{ route('profile', $catalog->creator) }}">{{ $catalog->creator->name }}</a> posted:
+                            <a href="{{ $catalog->path() }}">
+                                {{ $catalog->title }}</a>
                        </span>
 
                         <span>{{ $catalog->created_at->diffForHumans() }}</span>

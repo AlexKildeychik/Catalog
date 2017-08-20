@@ -79,8 +79,11 @@ class CatalogsController extends Controller
 
     public function destroy($category, Catalog $catalog)
     {
-        $catalog->comments()->delete();
+        $this->authorize('update', $catalog);
         $catalog->delete();
+        if (request()->wantsJson()){
+            return response([], 204);
+        }
         return redirect('/catalog');
     }
 

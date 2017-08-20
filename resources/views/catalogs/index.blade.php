@@ -14,7 +14,7 @@
 @include('layouts.app')
             <div class="container">
             <div class="row">
-                @foreach($catalogs as $catalog)
+                @forelse($catalogs as $catalog)
                 <div class="col-md-3">
                     <div class="product">
                             <p class="product-title">
@@ -24,7 +24,9 @@
                             <p class="product-price">{{$catalog->price}} chaos</p>
                     </div>
             </div>
-                @endforeach
+                @empty
+                <p>There are no relevant results at this time.</p>
+                    @endforelse
             </div>
             </div>
 </body>

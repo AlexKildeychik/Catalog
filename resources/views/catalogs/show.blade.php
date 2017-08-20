@@ -35,6 +35,7 @@
     </div>
 
 </div>
+@can ('update', $catalog)
         <div class="text-center">
     <form action="{{$catalog->path()}}" method="post">
         {{csrf_field()}}
@@ -50,7 +51,7 @@
         @endforeach
     </div>
 </div>
-@if (auth()->check())
+
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <form method="post" action="{{$catalog->path() . '/comments'}}">
@@ -63,6 +64,6 @@
     </div>
     @else
         <p class="text-center">Please <a href="{{route('login')}}">sign in</a> to participate in this discussion. </p>
-    @endif
+    @endcan
 </div>
 </body>
